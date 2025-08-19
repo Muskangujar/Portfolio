@@ -67,6 +67,51 @@ Hands-on with both software and hardware: Python image processing, Arduino progr
         icon: "https://www.labellerr.com/blog/content/images/2024/11/driver_drowsiness_detection.webp",
         github: "https://github.com/Muskangujar/Drowsiness-Detection"
     },
+    {
+        title: "Food Spoilage Detection System",
+        description: "Arduino + IoT-based food spoilage detection using methane, temperature, and humidity sensors with real-time alerts and cloud monitoring.",
+        details: `Developed an IoT-enabled Food Spoilage Detection System that uses gas (MQ3/MQ4), temperature, humidity, and light sensors to identify spoiled food in storage environments. The system is built around Arduino UNO with an ESP8266 Wi-Fi module for IoT connectivity and real-time monitoring via the ThingSpeak dashboard.
+
+Key capabilities:
+- Spoilage detection using methane gas (MQ3/MQ4) and environmental sensors (DHT11, LDR).
+- Real-time alerts via buzzer, LED, and 16x2 LCD display when spoilage thresholds are exceeded.
+- IoT integration with ThingSpeak for live monitoring and graphical analysis of sensor data.
+- Simulation tested in Proteus before hardware implementation.
+- Remote monitoring of food storage conditions through Wi-Fi-enabled data logging.
+
+Built for scalability, low-cost hardware prototyping, and real-world applications in food safety and storage monitoring.`,
+        tags: ["Arduino", "C++", "MQ3", "MQ4", "ESP8266", "ThingSpeak", "IoT", "Proteus", "Sensors", "LCD"],
+        icon: "https://electronicsforu.com/wp-content/uploads/2016/03/7D4_Checkpack.png",
+        github: "https://github.com/Muskangujar/Food-Spoilage-Detection"
+    },
+    {
+    title: "Hotel Management System",
+    description: "A Flask + MySQL based Hotel Management System for managing customers, rooms, and bookings with a simple web interface.",
+    details: `Developed a full-stack Hotel Management System that enables hotel staff to manage customers, rooms, and bookings efficiently. The system automates room status updates and provides a clean, user-friendly interface for hotel operations.
+
+Key capabilities:
+- Customer management: Add, view, and delete customers
+- Room management: Add rooms, set types & prices, manage availability
+- Booking management: Assign rooms, check-in, and check-out process
+- Automatic room status updates (Available / Occupied)
+- Continuous IDs in UI for cleaner display despite DB skips
+- Flask backend with MySQL database for all CRUD operations
+
+Tech stack:
+- Frontend: HTML, CSS, Bootstrap
+- Backend: Python (Flask)
+- Database: MySQL
+- Tools: MySQL Workbench, VS Code, Git/GitHub
+
+Future Enhancements:
+- Search and filter for customers and bookings
+- Room types with images and descriptions
+- User authentication (admin/staff login)
+- AI-based room recommendation system.`,
+    tags: ["Python", "Flask", "MySQL", "HTML", "CSS", "Bootstrap"],
+    icon: "https://tse1.mm.bing.net/th/id/OIP.fhxAW8bu3HciYzE4wK2O0QAAAA?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+    github: "https://github.com/Muskangujar/hotel-management-system"
+},
 ];
 
 function loadProjects() {
@@ -74,11 +119,10 @@ function loadProjects() {
     container.innerHTML = projects.map((project, index) => `
         <div class="project-card" tabindex="0">
             <div class="project-image">
-                ${
-                    project.icon?.startsWith('http') ?
-                    `<img src="${project.icon}" alt="${project.title} icon">` :
-                    project.icon ? `<i class="${project.icon}"></i>` : `<i class="fas fa-folder-open"></i>`
-                }
+                ${project.icon?.startsWith('http') ?
+            `<img src="${project.icon}" alt="${project.title} icon">` :
+            project.icon ? `<i class="${project.icon}"></i>` : `<i class="fas fa-folder-open"></i>`
+        }
             </div>
             <div class="project-info">
                 <h3 class="project-title">${project.title}</h3>
