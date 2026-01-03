@@ -732,15 +732,43 @@ section.in-view .section-title::after {
   z-index: -1;
 }
 
+/* 🔑 UPDATED */
 .modal-content {
   background-color: var(--dark);
   padding: 2rem;
   border-radius: 1rem;
-  max-width: 500px;
+
+  max-width: 600px;
   width: 90%;
+
+  max-height: 80vh;          /* LIMIT MODAL HEIGHT */
+  overflow: hidden;          /* CONTAIN SCROLL */
+
   color: var(--light);
   box-shadow: var(--glow);
   position: relative;
+
+  display: flex;             /* FLEX FOR SCROLL */
+  flex-direction: column;
+}
+
+/* 🔑 ADD THIS */
+.modal-description {
+  margin-top: 1rem;
+  overflow-y: auto;          /* ENABLE SCROLL */
+  max-height: 55vh;          /* SCROLL AREA */
+  line-height: 1.7;
+  padding-right: 8px;
+}
+
+/* Optional: nice scrollbar */
+.modal-description::-webkit-scrollbar {
+  width: 6px;
+}
+
+.modal-description::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: 10px;
 }
 
 .modal-close {
@@ -753,6 +781,7 @@ section.in-view .section-title::after {
   color: var(--light);
   cursor: pointer;
 }
+
 
 /* Project Buttons */
 .project-buttons {
@@ -1048,7 +1077,7 @@ section.in-view .section-title::after {
 }
 
 .hobby-tag {
-  background: rgba(161, 138, 255, 0.1);
+  background: rgba(106, 212, 255, 0.12);      /* primary blue */
   color: var(--gray);
   padding: 8px 15px;
   border-radius: 30px;
@@ -1057,18 +1086,19 @@ section.in-view .section-title::after {
   align-items: center;
   gap: 8px;
   transition: all var(--fast);
-  border: 1px solid rgba(161, 138, 255, 0.1);
+  border: 1px solid rgba(106, 212, 255, 0.25);
 }
 
 .hobby-tag:hover {
-  background: rgba(161, 138, 255, 0.2);
+  background: rgba(122, 250, 200, 0.22);      /* mint hover */
   color: var(--light);
   transform: translateY(-2px);
 }
 
 .hobby-tag i {
-  color: var(--accent);
+  color: var(--secondary);                    /* mint icons */
 }
+
 
 /* Responsive adjustments */
 @media (max-width: 768px) {

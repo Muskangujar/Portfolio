@@ -1,12 +1,13 @@
 // ========== Terminal Animation ==========
 const terminal = document.getElementById('terminal');
 const messages = [
-    "> Launching Muskan's AI-powered portfolio...",
-    "> BE E&TC | Class of 2025 | Pune, India",
-    "> Passionate about AI, ML, and Generative AI",
-    "> Projects: Emotion Recognition | Drowsiness Detection | AI Chatbot",
-    "> Systems ready — let's connect and innovate!"
+  "> Hello, world.",
+  "> I’m Muskan Gujar — an engineer in progress.",
+  "> Turning curiosity into code and models into systems.",
+  "> Exploring AI, ML, and real-world problem solving.",
+  "> This portfolio is a snapshot — not the destination."
 ];
+
 let messageIndex = 0;
 let charIndex = 0;
 let isDeleting = false;
@@ -34,6 +35,68 @@ function typeTerminal() {
 
 // ========== Projects ==========
 const projects = [
+    {
+        title: "Healthcare Chatbot (Symptom & Prescription Assistant)",
+        description: "A free, end-to-end healthcare chatbot that understands symptoms, supports prescription uploads, and provides safe, senior-friendly guidance using machine learning and OCR.",
+        details: `This project is a comprehensive healthcare chatbot built as a learning-focused, research-oriented system using only free and open-source tools. The chatbot is designed to assist users—especially senior citizens—by understanding symptom descriptions, extracting information from doctor prescriptions, and providing safe, non-diagnostic guidance.
+
+The system combines machine learning, natural language processing, and OCR in a structured, step-by-step manner. It focuses on explainability, safety, and real-world project architecture rather than shortcuts or paid APIs.
+
+Key highlights:
+- Symptom understanding using multi-label text classification (TF-IDF + Logistic Regression)
+- Synthetic data generation from medical datasets for safe and ethical training
+- Prescription text extraction using Tesseract OCR
+- Rule-based triage using symptom severity and precautions
+- Senior-friendly, safety-first design (no diagnosis or medication prescription)
+- Fully free, open-source, and reproducible project
+
+Core components:
+- Data preprocessing and synthetic dataset generation
+- Machine learning model training and evaluation
+- Symptom severity-based triage logic
+- Prescription OCR pipeline with human-in-the-loop design
+- FastAPI backend for model inference and file handling (planned)
+- Clean project structure suitable for real-world deployment
+
+Concepts practiced:
+- Machine learning fundamentals (multi-label classification)
+- Natural language processing with TF-IDF
+- Data cleaning and feature engineering
+- OCR using open-source tools
+- Backend API design with FastAPI
+- Ethical AI design and healthcare safety considerations
+
+This project is actively maintained and **in progress**, with planned additions including backend APIs, frontend UI, and detailed documentation. It serves both as a strong portfolio project and a deep learning exercise in building real-world AI systems responsibly.`,
+        tags: [
+            "Python",
+            "Machine Learning",
+            "NLP",
+            "Healthcare AI",
+            "OCR",
+            "FastAPI",
+            "Open Source",
+            "End-to-End Project"
+        ],
+        icon: "https://tse1.mm.bing.net/th/id/OIP.L8nzyFmSMxnLyqXU4u-q4gHaEU?rs=1&pid=ImgDetMain&o=7&rm=3",
+        github: "https://github.com/Muskangujar/healthcare-chatbot",
+        status: "In Progress"
+    }
+    , {
+        title: "Cervical Cancer Detection System",
+        description: "Automated classification of cervical cell images using deep learning and transfer learning (MobileNetV2) to support early cervical cancer screening.",
+        details: `This project focuses on automated classification of cervical cell images into five distinct categories using deep learning and transfer learning techniques. A pre-trained MobileNetV2 model is fine-tuned on Pap smear images to identify cervical abnormalities — a crucial step in early cervical cancer detection and diagnosis.
+
+Key highlights:
+- Transfer learning with MobileNetV2 for efficient and accurate image classification
+- Multi-class classification of cervical cell images into five diagnostic categories
+- Designed to assist early-stage cervical abnormality detection from Pap smear images
+- Emphasis on medical image analysis and real-world healthcare applications
+
+The project demonstrates the application of deep learning in medical imaging with a focus on reliability, performance, and clinical relevance.`,
+        tags: ["Python", "TensorFlow", "Keras", "Deep Learning", "Transfer Learning", "MobileNetV2", "Medical Imaging"],
+        icon: "https://images.onlymyhealth.com/imported/images/2023/January/04_Jan_2023/main_PAPsmeartestexplained.jpg",
+        github: "https://github.com/Muskangujar/CervicalCancer_Detection"
+    },
     {
         title: "Music Emotion Classification System",
         description: "Deep learning-based music emotion classifier with a GUI, using a CNN + LSTM hybrid model.",
@@ -85,9 +148,9 @@ Built for scalability, low-cost hardware prototyping, and real-world application
         github: "https://github.com/Muskangujar/Food-Spoilage-Detection"
     },
     {
-    title: "Hotel Management System",
-    description: "A Flask + MySQL based Hotel Management System for managing customers, rooms, and bookings with a simple web interface.",
-    details: `Developed a full-stack Hotel Management System that enables hotel staff to manage customers, rooms, and bookings efficiently. The system automates room status updates and provides a clean, user-friendly interface for hotel operations.
+        title: "Hotel Management System",
+        description: "A Flask + MySQL based Hotel Management System for managing customers, rooms, and bookings with a simple web interface.",
+        details: `Developed a full-stack Hotel Management System that enables hotel staff to manage customers, rooms, and bookings efficiently. The system automates room status updates and provides a clean, user-friendly interface for hotel operations.
 
 Key capabilities:
 - Customer management: Add, view, and delete customers
@@ -108,10 +171,53 @@ Future Enhancements:
 - Room types with images and descriptions
 - User authentication (admin/staff login)
 - AI-based room recommendation system.`,
-    tags: ["Python", "Flask", "MySQL", "HTML", "CSS", "Bootstrap"],
-    icon: "https://tse1.mm.bing.net/th/id/OIP.fhxAW8bu3HciYzE4wK2O0QAAAA?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
-    github: "https://github.com/Muskangujar/hotel-management-system"
-},
+        tags: ["Python", "Flask", "MySQL", "HTML", "CSS", "Bootstrap"],
+        icon: "https://tse1.mm.bing.net/th/id/OIP.fhxAW8bu3HciYzE4wK2O0QAAAA?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+        github: "https://github.com/Muskangujar/hotel-management-system"
+    },
+    {
+        title: "ATM Simulator with AI Assistant",
+        description: "Python-based ATM simulation with a Streamlit GUI and a simple AI assistant for interactive banking operations.",
+        details: `This collaborative project implements a Python-based ATM simulator that allows users to create accounts, manage transactions, and interact with an AI assistant for basic banking guidance. The system is designed with modular architecture and persistent data storage to simulate real-world ATM functionality.
+
+Key highlights:
+- Account creation with unique account numbers and PIN authentication
+- Secure deposit and withdrawal operations with balance validation
+- Transaction history tracking with persistent JSON-based storage
+- Integrated AI assistant to answer user queries related to banking operations
+- Streamlit-powered web interface with animated UI elements for enhanced usability
+
+The project emphasizes clean code structure, collaboration, and user-centric design while demonstrating practical Python application development.`,
+        tags: ["Python", "Streamlit", "JSON", "AI Assistant", "Backend Logic", "Web App"],
+        icon: "https://img.freepik.com/premium-photo/artificial-intelligence-ai-banking-future-banking-smart-financial-technologies-business_1028938-127081.jpg?w=2000",
+        github: "https://github.com/Muskangujar/Bank_Simulation"
+    },
+    {
+        title: "Python Mini Projects",
+        description: "A growing collection of Python mini projects built to strengthen core programming fundamentals and logical thinking through hands-on practice.",
+        details: `This repository contains a curated collection of Python mini projects developed as part of a continuous learning and practice journey. The projects are organized by difficulty level — Easy, Medium, and Hard — to progressively build confidence, problem-solving ability, and mastery of core Python concepts.
+
+Key highlights:
+- Projects categorized by difficulty: Easy → Medium → Hard
+- Hands-on practice focused on logic building rather than tutorial-following
+- Covers core Python concepts including variables, conditionals, loops, functions, and data structures
+- Emphasis on clean, readable, and well-structured code
+- Designed as a public learning log and practice portfolio
+
+Concepts practiced:
+- Python syntax and fundamentals
+- Input validation and flow control
+- Lists, dictionaries, and basic data handling
+- Game logic, random module usage, and control structures
+
+This repository is actively maintained and **in progress**, with new projects being added and existing ones improved as the difficulty level increases. It reflects consistent practice, learning by doing, and long-term skill development.`,
+        tags: ["Python", "Problem Solving", "Logic Building", "Beginner to Advanced", "Mini Projects"],
+        icon: "https://th.bing.com/th/id/OIP.KbwuBgGjVyq4jinHZURtvAHaDh?w=326&h=166&c=7&r=0&o=7&dpr=1.5&pid=1.7&rm=3",
+        github: "https://github.com/Muskangujar/python_mini_projects",
+        status: "In Progress"
+    }
+
+
 ];
 
 function loadProjects() {
