@@ -271,7 +271,7 @@ export default function Home() {
                      Industry validations from AWS, Oracle, and leading AI labs.
                 </p>
                 <div className="grid gap-2 sm:gap-4">
-                   {['Machine Learning A-Z', 'Oracle AI Foundations', 'AWS Cloud Foundations', 'Dolphins Lab'].map(c => (
+                   {['Machine Learning A-Z', 'Oracle AI Foundations', 'AWS Cloud Foundations', 'IoT Cert (Dolphins Lab)'].map(c => (
                      <div key={c} className="flex items-center gap-2 p-3 rounded-xl bg-foreground/[0.02] border border-foreground/5 transition-colors group-hover:bg-foreground/[0.05] sm:gap-3 sm:p-4 sm:rounded-2xl">
                         <Award size={16} className="text-foreground/20 sm:size-20" />
                         <span className="text-[10px] font-bold text-foreground/60 sm:text-sm">{c}</span>
