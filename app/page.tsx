@@ -69,8 +69,8 @@ const EXPERIENCES = [
     role: "Graduate Apprentice",
     company: "Zensar Technologies",
     period: "Aug 2023 — Oct 2023",
-    description: "Explored enterprise database management and data orchestration using SQL and PL/SQL for optimized querying.",
-    tags: ["SQL", "PL/SQL", "Databases"]
+    description: "Expanded foundational software engineering skills, focusing on Object-Oriented Programming (OOP) and Data Structures & Algorithms (DSA). Gained practical experience with Java, Python, and enterprise databases (SQL/PLSQL) while heavily emphasizing professional soft skills.",
+    tags: ["Java", "Python", "DSA & OOP", "SQL"]
   }
 ];
 
