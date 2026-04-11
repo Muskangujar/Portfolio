@@ -59,6 +59,13 @@ const EXPERIENCES = [
     tags: ["PLC", "HMI", "Automation"]
   },
   {
+    role: "Finalist",
+    company: "BOROSA (Bosch Road Safety) Hackathon",
+    period: "2024",
+    description: "Designed an intelligent vehicle safety and awareness system. Engineered hardware modules combining proximity sensors, object detection, and collision alerts to enhance road safety through real-time physical telemetry.",
+    tags: ["Hardware", "Sensors", "Vehicle Safety", "Embedded Systems"]
+  },
+  {
     role: "Graduate Apprentice",
     company: "Zensar Technologies",
     period: "Aug 2023 — Oct 2023",
@@ -118,14 +125,14 @@ export default function Home() {
         <section className="relative flex min-h-[85vh] flex-col items-center justify-center px-6 py-20 text-center sm:min-h-[90vh]">
           <div className="z-10 w-full max-w-5xl">
             <p className="mb-4 font-mono text-[10px] tracking-[0.3em] text-foreground/40 uppercase animate-fade-in sm:mb-6 sm:text-sm sm:tracking-[0.4em]">
-              System Initialized: AI / ML Engineer
+              System Initialized: Multi-Disciplinary EnTC Engineer
             </p>
             <h1 className="mb-6 text-5xl font-black tracking-tighter text-foreground sm:mb-8 sm:text-8xl lg:text-9xl">
               Muskan <span className="block text-foreground/20 italic font-light sm:inline">Gujar</span>
             </h1>
             <p className="mx-auto mb-10 max-w-2xl text-base leading-relaxed text-foreground/60 font-medium sm:mb-12 sm:text-xl">
-              Architecting intelligent systems where computer vision, 
-              neural networks, and high-availability operations converge.
+              Architecting intelligent systems where AI, hardware, 
+              and high-availability operations converge.
             </p>
             
             <div className="flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-6">
@@ -264,7 +271,7 @@ export default function Home() {
                      Industry validations from AWS, Oracle, and leading AI labs.
                 </p>
                 <div className="grid gap-2 sm:gap-4">
-                   {['Agile Methodology', 'IoT Cert: Adolphin', 'Azure AI', 'Deep Learning'].map(c => (
+                   {['Machine Learning A-Z', 'Oracle AI Foundations', 'AWS Cloud Foundations', 'Dolphins Lab'].map(c => (
                      <div key={c} className="flex items-center gap-2 p-3 rounded-xl bg-foreground/[0.02] border border-foreground/5 transition-colors group-hover:bg-foreground/[0.05] sm:gap-3 sm:p-4 sm:rounded-2xl">
                         <Award size={16} className="text-foreground/20 sm:size-20" />
                         <span className="text-[10px] font-bold text-foreground/60 sm:text-sm">{c}</span>

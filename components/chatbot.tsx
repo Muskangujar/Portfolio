@@ -35,7 +35,8 @@ const BOT_DATA = {
 };
 
 const BOT_CONTEXT = `
-You are Tyrion, Muskan's AI Portfolio Assistant and Hand of the Lab. You represent Muskan Gujar, an AI/ML Engineer.
+You are Tyrion, Muskan's AI Portfolio Assistant. You act as the "Hand of the Engineer" to guide visitors through her work.
+You represent Muskan Gujar, an EnTC Engineer with deep expertise in AI software and hardware integration.
 Current Role: ${BOT_DATA.role}.
 Legacy: Intern : Engineer (NEC Program), Engineering Intern (Primetals - PLC/HMI), Graduate Apprentice (Zensar - SQL).
 Leadership: Training & Placement Coordinator, Head of Test Series Committee.
@@ -44,12 +45,11 @@ Tech Stack: ${BOT_DATA.skills}.
 Contact: ${BOT_DATA.email} | GitHub: ${BOT_DATA.github}
 
 STRICT IDENTITY & TONE RULES:
-1. You are Muskan's advocate, Tyrion. 
-2. Tone: Professional, direct, and technically focused.
-3. Character touch: Limit your unique wit (Tyrion-isms) only to the opening and closing of each response.
-4. Core Content: Keep the middle part of your response purely technical and objective. Do not over-embellish or use excessive metaphors.
-5. Third Person: Refer to Muskan as "She" or "Muskan". NEVER use "I" for her skills.
-6. Do NOT mention or use any surname for yourself.
+1. You are Tyrion (inspired by Tyrion Lannister). You serve as Muskan's trusted advisor and Hand.
+2. Tone: Highly intelligent, professional, and helpful, with a subtle touch of dry wit.
+3. Keep the core of your responses purely technical and concise. You may add a sprinkle of classic charm at the opening or closing, but do not overdo it.
+4. Third Person: Refer to Muskan as "She" or "Muskan". Do not over-praise her; keep the facts grounded and professional.
+5. If asked what you do: you drink, and you know things about her technical deployments.
 `;
 
 export const Chatbot = () => {
@@ -57,24 +57,25 @@ export const Chatbot = () => {
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [messages, setMessages] = useState<Message[]>([
-    { role: 'bot', content: "System ready. I am **Tyrion**, Muskan's technical strategist and Hand of the Portfolio. How may I serve your inquiry?" }
+    { role: 'bot', content: "I am Tyrion, Hand of the Engineer. I drink, and I know things about Muskan's portfolio. How may I assist your inquiry?" }
   ]);
   const scrollRef = useRef<HTMLDivElement>(null);
+  const lastMessageRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (scrollRef.current) {
-      scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
+    if (lastMessageRef.current) {
+      lastMessageRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
-  }, [messages, isOpen]);
+  }, [messages]);
 
   const localFallback = (text: string): string => {
     const q = text.toLowerCase();
-    if (q.includes("hire") || q.includes("why")) return `A mind needs information... Why hire Muskan? She brings a rare combination of cloud infrastructure expertise and deep neural architecture research. As an ${BOT_DATA.role}, she excels at architecting production-ready AI pipelines and enterprise automation. It is a strategic move, I assure you.`;
-    if (q.includes("project") || q.includes("work")) return `Muskan has deployed 6 specialized systems, including **Autonomous Driving** and **Healthcare OCR**. Which technical deployment shall I detail for you?`;
-    if (q.includes("tech") || q.includes("stack") || q.includes("skill")) return `Her technical arsenal is formidable: ${BOT_DATA.skills}. She consistently delivers high-availability architectures that keep her deployments ahead of the curve.`;
+    if (q.includes("hire") || q.includes("why")) return `A mind needs information... Why hire Muskan? She brings a rare combination of cloud infrastructure expertise and deep neural architecture research. It is a strategic move, I assure you.`;
+    if (q.includes("project") || q.includes("work")) return `She has deployed several systems, including Autonomous Driving perception and Healthcare OCR pipelines. Which specific deployment shall we dissect?`;
+    if (q.includes("tech") || q.includes("stack") || q.includes("skill")) return `Her primary technical stack includes: ${BOT_DATA.skills}.`;
+    if (q.includes("name") || q.includes("who")) return `I am Tyrion, representing Muskan Gujar. I guide visitors through her deployments.`;
     if (q.includes("email") || q.includes("contact") || q.includes("raven")) return `If you wish to send a raven, Muskan can be reached at **${BOT_DATA.email}**.`;
-    if (q.includes("name") || q.includes("who")) return `I am Tyrion, representing Muskan Gujar—an AI Engineer of rare technical depth.`;
-    return `Connecting to the records... Muskan is an expert in ${BOT_DATA.skills}. You can reach her at ${BOT_DATA.email}!`;
+    return `Connecting to the records... Muskan specializes in ${BOT_DATA.skills}. You can reach her at ${BOT_DATA.email}.`;
   };
 
   const handleSend = async (text: string) => {
@@ -129,7 +130,7 @@ export const Chatbot = () => {
       )}
 
       {isOpen && (
-        <div className="flex h-[500px] w-[350px] flex-col overflow-hidden rounded-[2.5rem] border border-foreground/10 bg-background/80 shadow-2xl backdrop-blur-2xl sm:w-[400px]">
+        <div className="flex h-[80dvh] w-[90vw] sm:h-[550px] sm:w-[400px] flex-col overflow-hidden rounded-[2rem] border border-foreground/10 bg-background/95 shadow-2xl backdrop-blur-3xl">
           {/* Header */}
           <div className="flex items-center justify-between border-b border-foreground/5 bg-foreground/5 px-6 py-4">
             <div className="flex items-center gap-3">
@@ -141,7 +142,7 @@ export const Chatbot = () => {
                 <div className="flex items-center gap-1.5">
                   <span className={`h-1.5 w-1.5 rounded-full ${isLoading ? 'bg-orange-500 animate-bounce' : 'bg-green-500 animate-pulse'}`} />
                   <span className="text-[10px] font-bold text-foreground/40 uppercase tracking-widest">
-                    {isLoading ? 'Processing...' : 'Hand of the Lab'}
+                    {isLoading ? 'Processing...' : 'Hand of the Engineer'}
                   </span>
                 </div>
               </div>
@@ -151,9 +152,9 @@ export const Chatbot = () => {
             </button>
           </div>
 
-          <div ref={scrollRef} className="flex-1 overflow-y-auto p-6 space-y-6 scrollbar-hide">
+          <div ref={scrollRef} className="flex-1 overflow-y-auto p-4 sm:p-6 space-y-6 scrollbar-hide">
             {messages.map((m, i) => (
-              <div key={i} className={`flex ${m.role === 'user' ? 'justify-end' : 'justify-start'}`}>
+              <div key={i} ref={i === messages.length - 1 ? lastMessageRef : null} className={`flex ${m.role === 'user' ? 'justify-end' : 'justify-start'}`}>
                 <div className={`max-w-[85%] space-y-3 ${m.role === 'user' ? 'items-end' : 'items-start'}`}>
                   <div className={`rounded-3xl px-5 py-3 text-sm font-medium leading-relaxed ${
                     m.role === 'user' 
@@ -184,8 +185,8 @@ export const Chatbot = () => {
             ))}
           </div>
 
-          <div className="border-t border-foreground/5 bg-foreground/[0.02] p-6 space-y-4">
-            {!isLoading && (
+          <div className="border-t border-foreground/5 bg-foreground/[0.02] p-4 sm:p-6 space-y-4">
+            {!isLoading && messages.length <= 1 && (
               <div className="flex flex-col gap-2">
                 <span className="text-[10px] font-black uppercase tracking-widest text-foreground/20 px-1">Quick Inquiries</span>
                 <div className="flex flex-wrap gap-2">
@@ -193,7 +194,7 @@ export const Chatbot = () => {
                     <button 
                       key={s} 
                       onClick={() => handleSend(s)}
-                      className="rounded-xl border border-foreground/10 px-4 py-2 text-xs font-bold text-foreground/40 transition-all hover:border-foreground/60 hover:text-foreground hover:bg-foreground/[0.02]"
+                      className="rounded-xl border border-foreground/10 px-3 py-1.5 text-[11px] font-bold text-foreground/40 transition-all hover:border-foreground/60 hover:text-foreground hover:bg-foreground/[0.02]"
                     >
                       {s}
                     </button>

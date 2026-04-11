@@ -8,8 +8,8 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 const jetbrains = JetBrains_Mono({ subsets: ["latin"], variable: "--font-mono" });
 
 export const metadata: Metadata = {
-  title: "Muskan Gujar | AI Engineer",
-  description: "Applied Intelligence Lab of Muskan Gujar. Architecting the future of vision and cloud automation.",
+  title: "Muskan Gujar | Engineer",
+  description: "EnTC Engineer specializing in AI, Computer Vision, and Hardware Integration. Architecting intelligent systems across software and physical boundaries.",
   icons: {
     icon: "/favicon.svg",
   },
