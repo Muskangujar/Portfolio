@@ -9,7 +9,7 @@ import Link from 'next/link';
 const Marquee = () => {
   const skills = [
     "Computer Vision", "Deep Learning", "NLP", "PyTorch", "TensorFlow", 
-    "OpenCV", "YOLO", "Azure", "Python", "FastAPI", "GCP", "Datadog", "Automation"
+    "OpenCV", "YOLO", "Azure", "Python", "FastAPI", "GCP", "Datadog", "Monitoring"
   ];
   
   return (
@@ -31,18 +31,18 @@ const Marquee = () => {
 
 const EXPERIENCES = [
   {
-    role: "Associate Engineer",
+    role: "Associate Support Engineer",
     company: "NielsenIQ",
     period: "2025 — Present",
-    description: "Leading cloud infrastructure management and enterprise automation strategies across hybrid Azure & GCP environments. Architecting high-availability pipelines and proactive monitoring solutions.",
-    tags: ["Azure", "GCP", "Automation", "Cloud Ops"]
+    description: "Handling Business As Usual (BAU) operations and implementing cloud workarounds across hybrid Azure & GCP environments. My expertise lies in handling issues and performing robust system monitoring.",
+    tags: ["Azure", "GCP", "Monitoring", "Cloud Ops"]
   },
   {
     role: "Intern : Engineer, NEC Program",
     company: "NielsenIQ",
     period: "2025",
-    description: "Architecting automated incident workflows and deployment validation pipelines. Pioneered proactive anomaly detection protocols that scaled production resilience.",
-    tags: ["Automation", "CI/CD", "Resilience"]
+    description: "Supported incident workflows and deployment validation pipelines. Pioneered proactive monitoring protocols that scaled production resilience.",
+    tags: ["Monitoring", "CI/CD", "Resilience"]
   },
   {
     role: "AI Research Assistant",
