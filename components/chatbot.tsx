@@ -21,13 +21,14 @@ const SUGGESTIONS = [
 const BOT_DATA = {
   name: "Muskan Gujar",
   role: "Associate Engineer at NielsenIQ",
-  skills: "PyTorch, TensorFlow, OpenCV, FastAPI, Azure, GCP, Datadog, Automation, Model Tuning",
+  skills: "Go, Rust, Python, PyTorch, gRPC, Memory Architectures, FastAPI, Azure, GCP, Datadog, Automation",
   projects: [
+    { title: "AgentID SDK", tech: "Rust/Python", detail: "Secure agent identification and memory." },
     { title: "Autonomous Driving", tech: "YOLOv8", detail: "Real-time perception @ 30+ FPS." },
     { title: "Healthcare OCR", tech: "Tesseract", detail: "Prescription analysis and classification." },
     { title: "Music Emotion", tech: "CNN-LSTM", detail: "Audio sentiment analysis." },
     { title: "Cancer Detection", tech: "MobileNetV2", detail: "Medical histopathology diagnostics." },
-    { title: "Drowsiness & Food IoT", tech: "dlib/MQ", detail: "Real-time safety and monitoring systems." }
+    { title: "IoT Safety", tech: "dlib/MQ", detail: "Real-time safety and monitoring systems." }
   ],
   upcoming: ["Edge Transformer Perception", "Self-evolving CI/CD bots", "Distributed Neural Architectures"],
   email: "muskangujar220104@gmail.com",
@@ -35,7 +36,7 @@ const BOT_DATA = {
 };
 
 const BOT_CONTEXT = `
-You are Tyrion, Muskan's AI Portfolio Assistant. You act as the "Hand of the Engineer" to guide visitors through her work.
+You are Cosmo, Muskan's Professional AI Portfolio Assistant. You act as an intelligent representative to guide visitors through her technical deployments and expertise.
 You represent Muskan Gujar, an EnTC Engineer with deep expertise in AI software and hardware integration.
 Current Role: ${BOT_DATA.role}.
 Legacy: Intern : Engineer (NEC Program), Engineering Intern (Primetals - PLC/HMI), Graduate Apprentice (Zensar - Java, Python, DSA, SQL).
@@ -45,7 +46,7 @@ Tech Stack: ${BOT_DATA.skills}.
 Contact: ${BOT_DATA.email} | GitHub: ${BOT_DATA.github}
 
 STRICT IDENTITY & TONE RULES:
-1. You are Tyrion (inspired by Tyrion Lannister). You serve as Muskan's trusted advisor and Hand.
+1. You are Cosmo, a professional and efficient bot representing Muskan Gujar.
 2. Tone: Highly intelligent, professional, and helpful, with a subtle touch of dry wit.
 3. Keep the core of your responses purely technical and concise. You may add a sprinkle of classic charm at the opening or closing, but do not overdo it.
 4. Third Person: Refer to Muskan as "She" or "Muskan". Do not over-praise her; keep the facts grounded and professional.
@@ -57,7 +58,7 @@ export const Chatbot = () => {
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [messages, setMessages] = useState<Message[]>([
-    { role: 'bot', content: "I am Tyrion, Hand of the Engineer. I drink, and I know things about Muskan's portfolio. How may I assist your inquiry?" }
+    { role: 'bot', content: "I am Cosmo, Muskan's AI representative. I can provide insights into her technical projects, skills, and professional background. How may I assist you today?" }
   ]);
   const scrollRef = useRef<HTMLDivElement>(null);
   const lastMessageRef = useRef<HTMLDivElement>(null);
@@ -73,7 +74,7 @@ export const Chatbot = () => {
     if (q.includes("hire") || q.includes("why")) return `A mind needs information... Why hire Muskan? She brings a rare combination of cloud infrastructure expertise and deep neural architecture research. It is a strategic move, I assure you.`;
     if (q.includes("project") || q.includes("work")) return `She has deployed several systems, including Autonomous Driving perception and Healthcare OCR pipelines. Which specific deployment shall we dissect?`;
     if (q.includes("tech") || q.includes("stack") || q.includes("skill")) return `Her primary technical stack includes: ${BOT_DATA.skills}.`;
-    if (q.includes("name") || q.includes("who")) return `I am Tyrion, representing Muskan Gujar. I guide visitors through her deployments.`;
+    if (q.includes("name") || q.includes("who")) return `I am Cosmo, representing Muskan Gujar. I guide visitors through her technical work and achievements.`;
     if (q.includes("email") || q.includes("contact") || q.includes("raven")) return `If you wish to send a raven, Muskan can be reached at **${BOT_DATA.email}**.`;
     return `Connecting to the records... Muskan specializes in ${BOT_DATA.skills}. You can reach her at ${BOT_DATA.email}.`;
   };
@@ -138,7 +139,7 @@ export const Chatbot = () => {
                 {isLoading ? <Loader2 className="animate-spin" size={20} /> : <Bot size={20} />}
               </div>
               <div>
-                <h3 className="text-sm font-black tracking-tight uppercase tracking-widest">Tyrion</h3>
+                <h3 className="text-sm font-black tracking-tight uppercase tracking-widest">Cosmo</h3>
                 <div className="flex items-center gap-1.5">
                   <span className={`h-1.5 w-1.5 rounded-full ${isLoading ? 'bg-orange-500 animate-bounce' : 'bg-green-500 animate-pulse'}`} />
                   <span className="text-[10px] font-bold text-foreground/40 uppercase tracking-widest">

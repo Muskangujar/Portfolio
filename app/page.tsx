@@ -8,8 +8,8 @@ import Link from 'next/link';
 
 const Marquee = () => {
   const skills = [
-    "Computer Vision", "Deep Learning", "NLP", "PyTorch", "TensorFlow", 
-    "OpenCV", "YOLO", "Azure", "Python", "FastAPI", "GCP", "Datadog", "Monitoring"
+    "Go", "Rust", "Computer Vision", "Deep Learning", "NLP", "PyTorch", "gRPC", 
+    "Memory Architectures", "Python", "FastAPI", "Azure", "GCP", "Datadog"
   ];
   
   return (
@@ -75,6 +75,12 @@ const EXPERIENCES = [
 ];
 
 const FEATURED_PROJECTS = [
+  {
+    title: "AgentID Python SDK",
+    description: "High-performance Python SDK backed by Rust (PyO3/Maturin) for secure, framework-agnostic agent identification and memory management.",
+    tags: ["Rust", "Python", "PyO3", "AI Agents"],
+    image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=1200",
+  },
   {
     title: "Autonomous Driving Perception",
     description: "High-throughput, low-latency perception pipeline utilizing YOLOv8 architectures.",

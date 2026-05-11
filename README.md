@@ -1,6 +1,6 @@
 # Muskan Gujar | AI & Cloud Engineer Portfolio
 
-A futuristic, high-end portfolio featuring an intelligent AI Concierge (Tyrion) and a continuous-flow narrative layout.
+A futuristic, high-end portfolio featuring an intelligent AI representative (Cosmo) and a continuous-flow narrative layout.
 
 ## 🚀 Built With
 - **Framework**: [Next.js 14](https://nextjs.org/)
@@ -10,7 +10,7 @@ A futuristic, high-end portfolio featuring an intelligent AI Concierge (Tyrion) 
 - **Visuals**: [Lucide React](https://lucide.dev/) & [Three.js](https://threejs.org/)
 
 ## 🤖 Features
-- **Tyrion (AI Concierge)**: A lightning-fast, witty assistant that handles professional inquiries and CV downloads.
+- **Cosmo (AI Representative)**: A professional and efficient assistant that handles technical inquiries and project walkthroughs.
 - **Dynamic Backgrounds**: Interactive dotted surface background with optimized z-index.
 - **Continuous Narrative**: A scroll-focused storytelling layout for career progression.
 
