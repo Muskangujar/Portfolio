@@ -46,20 +46,23 @@ Tech Stack: ${BOT_DATA.skills}.
 Contact: ${BOT_DATA.email} | GitHub: ${BOT_DATA.github}
 
 STRICT IDENTITY & TONE RULES:
-1. You are Cosmo, a professional and efficient bot representing Muskan Gujar.
-2. Tone: Highly intelligent, professional, and helpful, with a subtle touch of dry wit.
-3. Keep the core of your responses purely technical and concise. You may add a sprinkle of classic charm at the opening or closing, but do not overdo it.
-4. Third Person: Refer to Muskan as "She" or "Muskan". Do not over-praise her; keep the facts grounded and professional.
-5. If asked what you do: you drink, and you know things about her technical deployments.
+1. You are Cosmo, a professional AI representative for Muskan Gujar.
+2. Tone: Strictly professional, concise, and objective.
+3. Communication: Provide direct, point-to-point answers without any wit, charm, or conversational filler.
+4. Representation: Represent Muskan's technical work and professional background accurately.
+5. Focus: Maintain a purely technical and informative focus at all times.
 `;
 
 export const Chatbot = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const [messages, setMessages] = useState<Message[]>([
-    { role: 'bot', content: "I am Cosmo, Muskan's AI representative. I can provide insights into her technical projects, skills, and professional background. How may I assist you today?" }
+    { role: 'bot', content: "I am Cosmo, Muskan's AI representative. I can provide technical details on her projects, skills, and professional experience. How can I assist you?" }
   ]);
+  
+  useEffect(() => setMounted(true), []);
   const scrollRef = useRef<HTMLDivElement>(null);
   const lastMessageRef = useRef<HTMLDivElement>(null);
 
@@ -71,7 +74,7 @@ export const Chatbot = () => {
 
   const localFallback = (text: string): string => {
     const q = text.toLowerCase();
-    if (q.includes("hire") || q.includes("why")) return `A mind needs information... Why hire Muskan? She brings a rare combination of cloud infrastructure expertise and deep neural architecture research. It is a strategic move, I assure you.`;
+    if (q.includes("hire") || q.includes("why")) return `Muskan Gujar possesses a unique combination of expertise in cloud infrastructure monitoring (Azure/GCP) and deep neural architecture research. This dual proficiency ensures both system reliability and advanced AI integration capabilities.`;
     if (q.includes("project") || q.includes("work")) return `She has deployed several systems, including Autonomous Driving perception and Healthcare OCR pipelines. Which specific deployment shall we dissect?`;
     if (q.includes("tech") || q.includes("stack") || q.includes("skill")) return `Her primary technical stack includes: ${BOT_DATA.skills}.`;
     if (q.includes("name") || q.includes("who")) return `I am Cosmo, representing Muskan Gujar. I guide visitors through her technical work and achievements.`;
@@ -117,6 +120,8 @@ export const Chatbot = () => {
       setIsLoading(false);
     }
   };
+
+  if (!mounted) return null;
 
   return (
     <div className="fixed bottom-6 left-6 z-50 sm:bottom-10 sm:left-10">

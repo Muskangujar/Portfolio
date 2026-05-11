@@ -2,58 +2,88 @@
 
 import React, { useEffect, useState } from 'react';
 import { DottedSurface } from "@/components/ui/dotted-surface";
-import { ArrowLeft, Github, ExternalLink, Loader2 } from 'lucide-react';
+import { ArrowLeft, Github, ExternalLink, Loader2, Sparkles } from 'lucide-react';
 import Link from 'next/link';
-import { fetchUserRepos, GitHubRepo } from '@/lib/github';
+import { fetchUserRepos } from '@/lib/github';
 
 const FEATURED_PROJECTS = [
   {
-    title: "AgentID Python SDK",
-    description: "Architecting a high-performance, Rust-backed Python SDK for secure agent identification. Implemented Maturin/PyO3 for token verification and integrated with LangGraph/CrewAI/FastAPI ecosystems.",
-    tags: ["Rust", "Python", "gRPC", "AI Security"],
-    image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=1200",
+    title: "AgentID",
+    description: "A production-grade memory layer for AI agents designed to enable long-term context, personalization, and stateful behavior through a structured SDK.",
+    tags: ["LLMs", "Memory SDK", "Stateful AI"],
+    image: "/agentid.png",
     githubUrl: "https://github.com/Muskangujar/AgentID",
   },
   {
-    title: "Autonomous Driving Perception",
-    description: "Developing a high-throughput, low-latency perception pipeline for autonomous navigational frameworks leveraging YOLOv8 architectures optimized for real-time inference.",
-    tags: ["YOLOv8", "Computer Vision", "PyTorch", "TensorRT"],
-    image: "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&q=80&w=1200",
-    githubUrl: "https://github.com/Muskangujar",
+    title: "AgentMem",
+    description: "Multi-modal memory system for AI agents featuring a high-performance Rust core. Designed for long-term context retention and robust storage retrieval.",
+    tags: ["Rust", "Python", "Vector DB"],
+    image: "/agentmem.png",
+    githubUrl: "https://github.com/Muskangujar/AgentMem",
+    status: "In-Progress"
   },
   {
-    title: "Predictive Healthcare & OCR",
-    description: "Architecting a multi-label symptom classification engine utilizing TF-IDF orchestration and Tesseract-based OCR for prescriptive data extraction.",
-    tags: ["NLP", "Tesseract OCR", "FastAPI", "Python"],
-    image: "/healthcare.png",
+    title: "Quant Regime Analysis",
+    description: "Advanced financial research pipeline utilizing Reinforcement Learning for market regime detection, alpha research, and portfolio optimization.",
+    tags: ["Quant", "RL", "Financial ML"],
+    image: "/quant.png",
+    githubUrl: "https://github.com/Muskangujar/regime-lab",
+    status: "In-Progress"
+  },
+  {
+    title: "Autonomous Driving Perception",
+    description: "Real-time perception pipeline for edge devices. Integrates classical OpenCV lane detection with YOLOv8-nano for multi-class object detection on CPU-only hardware.",
+    tags: ["YOLOv8", "OpenCV", "Edge AI"],
+    image: "/driving.png",
+    githubUrl: "https://github.com/Muskangujar/autonomous-driving-perception",
+  },
+  {
+    title: "Healthcare Chatbot",
+    description: "AI-driven medical assistant utilizing Tesseract-based OCR for document digitization and modular ML models for automated symptom analysis and diagnosis support.",
+    tags: ["OCR", "ML", "Healthcare AI"],
+    image: "/healthcare_v2.png",
     githubUrl: "https://github.com/Muskangujar/healthcare-chatbot",
   },
   {
-    title: "CNN-LSTM Music Emotion Classifier",
-    description: "A hybrid deep learning architecture employing CNNs for spatial features and LSTMs for temporal dependency modeling in audio DSP.",
-    tags: ["TensorFlow", "CNN-LSTM", "Librosa", "Audio DSP"],
-    image: "/music.png",
+    title: "Music Emotion Classification",
+    description: "Hybrid CNN-LSTM deep learning architecture for classifying audio into mood categories. Extracts MFCC and spectral features to map audio to the Russell Emotion Model.",
+    tags: ["CNN-LSTM", "MFCC", "Audio DSP"],
+    image: "/music_v2.png",
     githubUrl: "https://github.com/Muskangujar/Music_Classification",
   },
   {
+    title: "Bank Simulation & AI",
+    description: "Sophisticated ATM simulator with an interactive Streamlit UI and integrated AI assistant for real-time transaction processing and guidance.",
+    tags: ["Streamlit", "Python", "AI Concierge"],
+    image: "/bank_v2.png",
+    githubUrl: "https://github.com/Muskangujar/Bank-Simulation",
+  },
+  {
+    title: "Hotel Management System",
+    description: "Comprehensive web-based platform for managing hotel operations, room availability, and customer workflows using Flask and MySQL.",
+    tags: ["Python", "Flask", "MySQL"],
+    image: "/hotel_v2.png",
+    githubUrl: "https://github.com/Muskangujar/Hotel_Management_system",
+  },
+  {
     title: "Cervical Cancer Detection",
-    description: "Deep convolutional neural network orchestration utilizing fine-tuned MobileNetV2 with transfer learning for automated Pap smear classification.",
-    tags: ["Deep Learning", "Medical AI", "Transfer Learning"],
-    image: "/cancer.png",
+    description: "Deep learning screening system using MobileNetV2 Transfer Learning to classify Pap smear cell images into distinct diagnostic categories with high precision.",
+    tags: ["MobileNetV2", "Medical Imaging", "Transfer Learning"],
+    image: "/cancer_v2.png",
     githubUrl: "https://github.com/Muskangujar/CervicalCancer_Detection",
   },
   {
-    title: "Drowsiness Detection & IoT",
-    description: "Safety-critical CV framework employing facial-landmark point-cloud analysis to monitor Eye Aspect Ratio (EAR) in real-time.",
-    tags: ["Python", "dlib", "IoT", "Real-time CV"],
-    image: "/drowsiness.png",
+    title: "Drowsiness Detection",
+    description: "Safety-critical CV system calculating Eye Aspect Ratio (EAR) to monitor driver fatigue. Integrates real-time webcam processing with Arduino-based physical alert systems.",
+    tags: ["CV", "EAR", "Arduino", "IoT"],
+    image: "/drowsiness_v2.png",
     githubUrl: "https://github.com/Muskangujar/Drowsiness-Detection",
   },
   {
-    title: "IoT Food Spoilage Monitoring",
-    description: "IoT-orchestrated multi-sensor array detecting methane and ethanol with real-time telemetry streaming to cloud dashboards.",
-    tags: ["IoT", "ESP8266", "Cloud Telemetry", "Sensors"],
-    image: "/food.png",
+    title: "Food Spoilage Detection",
+    description: "IoT monitoring system utilizing MQ-series gas sensors and DHT11 sensors for real-time food quality assessment and automated safety alerting.",
+    tags: ["IoT", "Gas Sensors", "Arduino"],
+    image: "/food_v2.png",
     githubUrl: "https://github.com/Muskangujar/Food-Spoilage-Detection",
   }
 ];
@@ -61,21 +91,35 @@ const FEATURED_PROJECTS = [
 export default function ProjectsPage() {
   const [githubProjects, setGithubProjects] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
+  const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
+    setIsMounted(true);
     const loadRepos = async () => {
       const repos = await fetchUserRepos('Muskangujar');
+      
+      const normalize = (s: string) => s.toLowerCase().replace(/[-_]/g, '').trim();
 
-      // Filter out repos that are already in FEATURED_PROJECTS
-      const filteredRepos = repos.filter(repo =>
-        !FEATURED_PROJECTS.some(fp =>
-          fp.githubUrl.toLowerCase().includes(repo.name.toLowerCase())
-        )
-      ).map(repo => ({
+      const filteredRepos = repos.filter(repo => {
+        const repoName = normalize(repo.name);
+        // Explicitly remove "what coding", "Python-Mini-Projects", or "Portfolio"
+        if (
+          repoName.includes('whatcoding') || 
+          repoName.includes('pythonminiprojects') ||
+          repoName.includes('portfolio')
+        ) return false;
+
+        // Prevent duplicates with featured projects
+        return !FEATURED_PROJECTS.some(fp => {
+          const featuredTitle = normalize(fp.title);
+          const featuredUrl = normalize(fp.githubUrl.split('/').pop() || "");
+          return featuredTitle.includes(repoName) || featuredUrl.includes(repoName) || repoName.includes(featuredTitle);
+        });
+      }).map(repo => ({
         title: repo.name.replace(/-/g, ' ').replace(/_/g, ' '),
         description: repo.description || "Experimental repository and codebase.",
-        tags: [repo.language, ...(repo.topics || [])].filter(Boolean),
-        image: `https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&q=80&w=1200`, // Default tech image
+        tags: [repo.language, ...(repo.topics || [])].filter(Boolean) as string[],
+        image: `https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&q=80&w=1200`,
         githubUrl: repo.html_url,
         isDynamic: true
       }));
@@ -87,7 +131,7 @@ export default function ProjectsPage() {
     loadRepos();
   }, []);
 
-  const allProjects = [...FEATURED_PROJECTS, ...githubProjects];
+  const allProjects = isMounted ? [...FEATURED_PROJECTS, ...githubProjects] : FEATURED_PROJECTS;
 
   return (
     <main className="relative min-h-screen bg-background text-foreground overflow-x-hidden">
@@ -115,11 +159,18 @@ export default function ProjectsPage() {
                 <div className="relative aspect-[16/10] overflow-hidden rounded-[2rem] border border-foreground/5 bg-foreground/5 transition-transform duration-700 group-hover:scale-[1.02] sm:rounded-[3.5rem]">
                   <img src={project.image} alt={project.title} className="h-full w-full object-cover transition-transform duration-1000 group-hover:scale-105" />
                   <div className="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent" />
-                  {project.isDynamic && (
-                    <div className="absolute top-6 right-6 z-20">
-                      <span className="px-3 py-1 rounded-full bg-background/80 backdrop-blur-md border border-foreground/10 text-[8px] font-black tracking-widest uppercase text-foreground/60">
-                        Live from GitHub
-                      </span>
+                  {(project.isDynamic || project.status) && (
+                    <div className="absolute top-6 right-6 z-20 flex gap-2">
+                      {project.status && (
+                        <span className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-orange-500/10 backdrop-blur-md border border-orange-500/20 text-[8px] font-black tracking-widest uppercase text-orange-500">
+                          <Sparkles size={10} className="animate-pulse" /> {project.status}
+                        </span>
+                      )}
+                      {project.isDynamic && (
+                        <span className="px-3 py-1 rounded-full bg-background/80 backdrop-blur-md border border-foreground/10 text-[8px] font-black tracking-widest uppercase text-foreground/60">
+                          Live from GitHub
+                        </span>
+                      )}
                     </div>
                   )}
                 </div>
