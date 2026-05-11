@@ -12,10 +12,10 @@ type Message = {
 };
 
 const SUGGESTIONS = [
-  "Why hire Muskan?",
-  "Her latest deployments?",
-  "Her technical arsenal?",
-  "Send a raven to Muskan"
+  "Technical architecture of AgentID?",
+  "Experience with Cloud Infrastructure?",
+  "Research on neural architectures?",
+  "Professional collaboration models?"
 ];
 
 const BOT_DATA = {
@@ -75,7 +75,7 @@ export const Chatbot = () => {
     if (q.includes("project") || q.includes("work")) return `She has deployed several systems, including Autonomous Driving perception and Healthcare OCR pipelines. Which specific deployment shall we dissect?`;
     if (q.includes("tech") || q.includes("stack") || q.includes("skill")) return `Her primary technical stack includes: ${BOT_DATA.skills}.`;
     if (q.includes("name") || q.includes("who")) return `I am Cosmo, representing Muskan Gujar. I guide visitors through her technical work and achievements.`;
-    if (q.includes("email") || q.includes("contact") || q.includes("raven")) return `If you wish to send a raven, Muskan can be reached at **${BOT_DATA.email}**.`;
+    if (q.includes("email") || q.includes("contact")) return `Muskan can be reached directly at **${BOT_DATA.email}** for professional inquiries.`;
     return `Connecting to the records... Muskan specializes in ${BOT_DATA.skills}. You can reach her at ${BOT_DATA.email}.`;
   };
 
@@ -102,7 +102,7 @@ export const Chatbot = () => {
 
       // Smart link injection
       const query = text.toLowerCase();
-      if (query.includes("email") || query.includes("contact") || query.includes("raven") || query.includes("hire")) {
+      if (query.includes("email") || query.includes("contact") || query.includes("hire")) {
         botMessage.links = [{ label: "Email Muskan", url: `mailto:${BOT_DATA.email}`, icon: Mail }];
       } else if (query.includes("github") || query.includes("code") || query.includes("source") || query.includes("repositories")) {
         botMessage.links = [{ label: "Open GitHub", url: `https://${BOT_DATA.github}`, icon: Github }];
@@ -143,7 +143,7 @@ export const Chatbot = () => {
                 <div className="flex items-center gap-1.5">
                   <span className={`h-1.5 w-1.5 rounded-full ${isLoading ? 'bg-orange-500 animate-bounce' : 'bg-green-500 animate-pulse'}`} />
                   <span className="text-[10px] font-bold text-foreground/40 uppercase tracking-widest">
-                    {isLoading ? 'Processing...' : 'Hand of the Engineer'}
+                    {isLoading ? 'Processing...' : 'Professional AI Assistant'}
                   </span>
                 </div>
               </div>
@@ -210,7 +210,7 @@ export const Chatbot = () => {
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 onKeyDown={(e) => e.key === 'Enter' && handleSend(input)}
-                placeholder={isLoading ? "Analyzing..." : "State your inquiry..."}
+                placeholder={isLoading ? "Analyzing..." : "Ask about her work or expertise..."}
                 disabled={isLoading}
                 className="flex-1 rounded-2xl border border-foreground/10 bg-transparent px-4 py-3 text-sm font-medium text-foreground placeholder:text-foreground/20 focus:border-foreground/30 focus:outline-none disabled:opacity-50"
               />

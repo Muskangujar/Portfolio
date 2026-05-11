@@ -25,35 +25,35 @@ const FEATURED_PROJECTS = [
     title: "Predictive Healthcare & OCR",
     description: "Architecting a multi-label symptom classification engine utilizing TF-IDF orchestration and Tesseract-based OCR for prescriptive data extraction.",
     tags: ["NLP", "Tesseract OCR", "FastAPI", "Python"],
-    image: "/healthcare.png",
+    image: "https://images.unsplash.com/photo-1576091160550-2173dad99a01?auto=format&fit=crop&q=80&w=1200",
     githubUrl: "https://github.com/Muskangujar/healthcare-chatbot",
   },
   {
     title: "CNN-LSTM Music Emotion Classifier",
     description: "A hybrid deep learning architecture employing CNNs for spatial features and LSTMs for temporal dependency modeling in audio DSP.",
     tags: ["TensorFlow", "CNN-LSTM", "Librosa", "Audio DSP"],
-    image: "/music.png",
+    image: "https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?auto=format&fit=crop&q=80&w=1200",
     githubUrl: "https://github.com/Muskangujar/Music_Classification",
   },
   {
-    title: "Histopathological Cancer Diagnostics",
-    description: "Deep convolutional neural network orchestration utilizing fine-tuned MobileNetV2 with transfer learning for Pap smear classification.",
+    title: "Cervical Cancer Detection",
+    description: "Deep convolutional neural network orchestration utilizing fine-tuned MobileNetV2 with transfer learning for automated Pap smear classification.",
     tags: ["Deep Learning", "Medical AI", "Transfer Learning"],
-    image: "/cancer.png",
+    image: "https://images.unsplash.com/photo-1579154235602-3c2c2405786d?auto=format&fit=crop&q=80&w=1200",
     githubUrl: "https://github.com/Muskangujar/CervicalCancer_Detection",
   },
   {
     title: "Drowsiness Detection & IoT",
     description: "Safety-critical CV framework employing facial-landmark point-cloud analysis to monitor Eye Aspect Ratio (EAR) in real-time.",
     tags: ["Python", "dlib", "IoT", "Real-time CV"],
-    image: "/drowsiness.png",
+    image: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&q=80&w=1200",
     githubUrl: "https://github.com/Muskangujar/Drowsiness-Detection",
   },
   {
     title: "IoT Food Spoilage Monitoring",
     description: "IoT-orchestrated multi-sensor array detecting methane and ethanol with real-time telemetry streaming to cloud dashboards.",
     tags: ["IoT", "ESP8266", "Cloud Telemetry", "Sensors"],
-    image: "/food.png",
+    image: "https://images.unsplash.com/photo-1542831371-29b0f74f9713?auto=format&fit=crop&q=80&w=1200",
     githubUrl: "https://github.com/Muskangujar/Food-Spoilage-Detection",
   }
 ];
@@ -65,10 +65,10 @@ export default function ProjectsPage() {
   useEffect(() => {
     const loadRepos = async () => {
       const repos = await fetchUserRepos('Muskangujar');
-      
+
       // Filter out repos that are already in FEATURED_PROJECTS
-      const filteredRepos = repos.filter(repo => 
-        !FEATURED_PROJECTS.some(fp => 
+      const filteredRepos = repos.filter(repo =>
+        !FEATURED_PROJECTS.some(fp =>
           fp.githubUrl.toLowerCase().includes(repo.name.toLowerCase())
         )
       ).map(repo => ({
@@ -92,13 +92,13 @@ export default function ProjectsPage() {
   return (
     <main className="relative min-h-screen bg-background text-foreground overflow-x-hidden">
       <DottedSurface className="opacity-60 sm:opacity-80" />
-      
+
       <div className="relative z-10 mx-auto max-w-6xl px-6 py-12 sm:py-24">
         <Link href="/" className="group mb-8 inline-flex items-center gap-2 text-[10px] font-bold tracking-widest text-foreground/40 hover:text-foreground transition-colors uppercase sm:mb-12 sm:text-xs">
           <ArrowLeft size={16} className="transition-transform group-hover:-translate-x-1" />
           Back to Terminal
         </Link>
-        
+
         <header className="mb-12 sm:mb-24">
           <h1 className="mb-4 text-4xl font-black tracking-tighter sm:text-8xl">
             Selected <span className="text-foreground/20 italic font-light block sm:inline">Deployments</span>
@@ -127,7 +127,7 @@ export default function ProjectsPage() {
               <div className="space-y-4 sm:space-y-8">
                 <div className="space-y-2 sm:space-y-4">
                   <div className="flex flex-wrap gap-2">
-                    {project.tags.slice(0, 4).map(tag => (
+                    {project.tags.slice(0, 4).map((tag: string) => (
                       <span key={tag} className="px-2 py-0.5 rounded-full bg-foreground/[0.03] border border-foreground/5 text-[8px] font-black tracking-widest uppercase text-foreground/30 sm:px-3 sm:py-1 sm:text-[10px]">
                         {tag}
                       </span>
@@ -138,7 +138,7 @@ export default function ProjectsPage() {
                     {project.description}
                   </p>
                 </div>
-                
+
                 <div className="flex items-center gap-4 sm:gap-6">
                   <a href={project.githubUrl} target="_blank" className="flex items-center gap-2 font-black text-[10px] tracking-widest uppercase text-foreground hover:text-foreground/60 transition-colors sm:text-xs">
                     <Github size={16} className="sm:size-18" /> Source
@@ -150,7 +150,7 @@ export default function ProjectsPage() {
               </div>
             </div>
           ))}
-          
+
           {loading && (
             <div className="flex flex-col items-center justify-center py-12 gap-4">
               <Loader2 className="animate-spin text-foreground/20" size={40} />

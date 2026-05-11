@@ -91,31 +91,31 @@ const FEATURED_PROJECTS = [
     title: "Healthcare Chatbot (OCR)",
     description: "Multi-label symptom classification assistant integrating Tesseract OCR.",
     tags: ["NLP", "Tesseract OCR"],
-    image: "/healthcare.png",
+    image: "https://images.unsplash.com/photo-1576091160550-2173dad99a01?auto=format&fit=crop&q=80&w=1200",
   },
   {
     title: "Music Emotion Classifier",
     description: "Hybrid CNN-LSTM architecture for real-time audio sentiment analysis.",
     tags: ["Deep Learning", "CNN-LSTM"],
-    image: "/music.png",
+    image: "https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?auto=format&fit=crop&q=80&w=1200",
   },
   {
-    title: "Cancer Detection System",
-    description: "MobileNetV2-based diagnostic system for histopathological classification.",
+    title: "Cervical Cancer Detection",
+    description: "MobileNetV2-based diagnostic system for automated pap smear classification.",
     tags: ["Vision", "Diagnostics"],
-    image: "/cancer.png",
+    image: "https://images.unsplash.com/photo-1579154235602-3c2c2405786d?auto=format&fit=crop&q=80&w=1200",
   },
   {
     title: "Drowsiness Intervention",
     description: "Driver safety system using dlib facial landmarks and EAR monitoring.",
     tags: ["IoT", "Surveillance"],
-    image: "/drowsiness.png",
+    image: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&q=80&w=1200",
   },
   {
     title: "IoT Food Spoilage",
     description: "Multi-sensor gas detection array with cloud-based telemetry.",
     tags: ["IoT", "Edge AI"],
-    image: "/food.png",
+    image: "https://images.unsplash.com/photo-1542831371-29b0f74f9713?auto=format&fit=crop&q=80&w=1200",
   }
 ];
 
