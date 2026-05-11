@@ -123,7 +123,7 @@ export const Chatbot = () => {
       {!isOpen && (
         <button
           onClick={() => setIsOpen(true)}
-          className="group relative flex h-14 w-14 items-center justify-center rounded-2xl bg-foreground text-background shadow-2xl transition-all hover:scale-110 active:scale-95 sm:h-16 sm:w-16"
+          className="group relative flex h-14 w-14 items-center justify-center rounded-2xl bg-foreground text-background shadow-2xl transition-all hover:scale-110 active:scale-95 sm:h-16 sm:w-16 cursor-pointer pointer-events-auto"
         >
           <Sparkles className="absolute -top-2 -right-2 h-6 w-6 text-foreground animate-pulse" />
           <Bot size={24} />

@@ -29,8 +29,8 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <GlobalUI />
           {children}
+          <GlobalUI />
         </ThemeProvider>
       </body>
     </html>

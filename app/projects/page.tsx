@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useEffect, useState } from 'react';
 import { DottedSurface } from "@/components/ui/dotted-surface";
 import { ArrowLeft, Github, ExternalLink, Loader2 } from 'lucide-react';
