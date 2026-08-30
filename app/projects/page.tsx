@@ -134,40 +134,54 @@ export default function ProjectsPage() {
   const allProjects = isMounted ? [...FEATURED_PROJECTS, ...githubProjects] : FEATURED_PROJECTS;
 
   return (
-    <main className="relative min-h-screen bg-background text-foreground overflow-x-hidden">
-      <DottedSurface className="opacity-60 sm:opacity-80" />
+    <main className="relative min-h-screen bg-black text-white selection:bg-white/20 selection:text-white overflow-x-hidden">
+      {/* Background Video */}
+      <div className="fixed inset-0 z-0 pointer-events-none">
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="h-full w-full object-cover"
+        >
+          <source src="/other.mp4" type="video/mp4" />
+        </video>
+        <div className="absolute inset-0 bg-gradient-to-b from-black/25 via-black/40 to-black/75" />
+      </div>
 
-      <div className="relative z-10 mx-auto max-w-6xl px-6 py-12 sm:py-24">
-        <Link href="/" className="group mb-8 inline-flex items-center gap-2 text-[10px] font-bold tracking-widest text-foreground/40 hover:text-foreground transition-colors uppercase sm:mb-12 sm:text-xs">
+      <DottedSurface className="opacity-40 sm:opacity-60" />
+
+      <div className="relative z-10 mx-auto max-w-6xl px-6 py-8 sm:py-14">
+        <Link href="/" className="group mb-6 inline-flex items-center gap-2 font-mono text-[10px] font-bold tracking-widest text-zinc-400 hover:text-white transition-colors uppercase sm:text-xs">
           <ArrowLeft size={16} className="transition-transform group-hover:-translate-x-1" />
-          Back to Terminal
+          Back to Home
         </Link>
 
-        <header className="mb-12 sm:mb-24">
-          <h1 className="mb-4 text-4xl font-black tracking-tighter sm:text-8xl">
-            Selected <span className="text-foreground/20 italic font-light block sm:inline">Deployments</span>
+        <header className="mb-8 sm:mb-12">
+          <h1 className="mb-2 text-3xl font-black tracking-tighter text-white sm:text-5xl">
+            Selected <span className="text-white/30 italic font-light block sm:inline">Deployments</span>
           </h1>
-          <p className="max-w-2xl text-base text-foreground/60 leading-relaxed font-medium sm:text-xl">
+          <p className="max-w-2xl text-sm text-zinc-300 leading-relaxed font-medium sm:text-base">
             A comprehensive catalog of high-availability AI systems and CV pipelines, including live telemetry from GitHub.
           </p>
         </header>
 
-        <div className="grid gap-16 sm:grid-gap-24">
+        <div className="grid gap-8 sm:gap-10">
           {allProjects.map((project, idx) => (
-            <div key={`${project.title}-${idx}`} className="group grid gap-6 lg:grid-cols-[1fr_1fr] lg:gap-12 items-center">
+            <div key={`${project.title}-${idx}`} className="group grid gap-6 lg:grid-cols-[1.1fr_1fr] lg:gap-8 items-center p-6 sm:p-8 rounded-[2rem] bg-zinc-950/75 border border-white/10 backdrop-blur-xl transition-all hover:border-white/30">
               <div className={(idx % 2 === 1) ? "lg:order-2" : ""}>
-                <div className="relative aspect-[16/10] overflow-hidden rounded-[2rem] border border-foreground/5 bg-foreground/5 transition-transform duration-700 group-hover:scale-[1.02] sm:rounded-[3.5rem]">
+                <div className="relative aspect-[16/10] overflow-hidden rounded-[1.5rem] border border-white/10 bg-black/50 transition-transform duration-700 group-hover:scale-[1.02] sm:rounded-[2rem]">
                   <img src={project.image} alt={project.title} className="h-full w-full object-cover transition-transform duration-1000 group-hover:scale-105" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
                   {(project.isDynamic || project.status) && (
-                    <div className="absolute top-6 right-6 z-20 flex gap-2">
+                    <div className="absolute top-4 right-4 z-20 flex gap-2">
                       {project.status && (
-                        <span className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-orange-500/10 backdrop-blur-md border border-orange-500/20 text-[8px] font-black tracking-widest uppercase text-orange-500">
+                        <span className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-white text-black text-[8px] font-black tracking-widest uppercase shadow-lg">
                           <Sparkles size={10} className="animate-pulse" /> {project.status}
                         </span>
                       )}
                       {project.isDynamic && (
-                        <span className="px-3 py-1 rounded-full bg-background/80 backdrop-blur-md border border-foreground/10 text-[8px] font-black tracking-widest uppercase text-foreground/60">
+                        <span className="px-3 py-1 rounded-full bg-black/80 backdrop-blur-md border border-white/20 text-[8px] font-black tracking-widest uppercase text-zinc-300">
                           Live from GitHub
                         </span>
                       )}
@@ -175,27 +189,27 @@ export default function ProjectsPage() {
                   )}
                 </div>
               </div>
-              <div className="space-y-4 sm:space-y-8">
-                <div className="space-y-2 sm:space-y-4">
+              <div className="space-y-3 sm:space-y-5">
+                <div className="space-y-2 sm:space-y-3">
                   <div className="flex flex-wrap gap-2">
                     {project.tags.slice(0, 4).map((tag: string) => (
-                      <span key={tag} className="px-2 py-0.5 rounded-full bg-foreground/[0.03] border border-foreground/5 text-[8px] font-black tracking-widest uppercase text-foreground/30 sm:px-3 sm:py-1 sm:text-[10px]">
+                      <span key={tag} className="px-2 py-0.5 rounded-full bg-white/[0.06] border border-white/10 text-[8px] font-black tracking-widest uppercase text-zinc-300 sm:px-3 sm:py-1 sm:text-[10px]">
                         {tag}
                       </span>
                     ))}
                   </div>
-                  <h2 className="text-2xl font-black tracking-tighter text-foreground sm:text-4xl capitalize">{project.title}</h2>
-                  <p className="text-base leading-relaxed text-foreground/60 font-medium sm:text-lg">
+                  <h2 className="text-xl font-black tracking-tight text-white sm:text-3xl capitalize">{project.title}</h2>
+                  <p className="text-sm leading-relaxed text-zinc-300 font-medium sm:text-base">
                     {project.description}
                   </p>
                 </div>
 
-                <div className="flex items-center gap-4 sm:gap-6">
-                  <a href={project.githubUrl} target="_blank" className="flex items-center gap-2 font-black text-[10px] tracking-widest uppercase text-foreground hover:text-foreground/60 transition-colors sm:text-xs">
-                    <Github size={16} className="sm:size-18" /> Source
+                <div className="flex items-center gap-4 sm:gap-6 pt-1">
+                  <a href={project.githubUrl} target="_blank" className="flex items-center gap-2 font-black text-[10px] tracking-widest uppercase text-white hover:text-zinc-300 transition-colors sm:text-xs">
+                    <Github size={15} className="sm:size-16" /> Source
                   </a>
-                  <a href={project.githubUrl} target="_blank" className="flex items-center gap-2 font-black text-[10px] tracking-widest uppercase text-foreground/40 hover:text-foreground transition-colors group sm:text-xs">
-                    Telemetry <ExternalLink size={12} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform sm:size-14" />
+                  <a href={project.githubUrl} target="_blank" className="flex items-center gap-2 font-black text-[10px] tracking-widest uppercase text-zinc-400 hover:text-white transition-colors group sm:text-xs">
+                    Telemetry <ExternalLink size={12} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                   </a>
                 </div>
               </div>
@@ -204,17 +218,20 @@ export default function ProjectsPage() {
 
           {loading && (
             <div className="flex flex-col items-center justify-center py-12 gap-4">
-              <Loader2 className="animate-spin text-foreground/20" size={40} />
-              <span className="text-[10px] font-black tracking-widest uppercase text-foreground/20">Syncing with GitHub Registry...</span>
+              <Loader2 className="animate-spin text-white/40" size={40} />
+              <span className="text-[10px] font-black tracking-widest uppercase text-zinc-400">Syncing with GitHub Registry...</span>
             </div>
           )}
         </div>
       </div>
 
-      <footer className="relative border-t border-foreground/5 py-12 text-center sm:py-16">
-        <div className="font-mono text-[8px] tracking-[0.4em] text-foreground/20 uppercase sm:text-[10px] sm:tracking-[0.5em]">
-          End of Deployment Log ● Muskan Gujar
-        </div>
+      <footer className="relative border-t border-white/10 py-12 text-center sm:py-16">
+        <a 
+          href="mailto:muskangujar220104@gmail.com"
+          className="font-mono text-[9px] tracking-[0.2em] text-zinc-400 uppercase hover:text-white hover:underline transition-colors sm:text-xs"
+        >
+          Muskan Gujar • Associate Specialist • Drop a DM / Email Directly (muskangujar220104@gmail.com)
+        </a>
       </footer>
     </main>
   );

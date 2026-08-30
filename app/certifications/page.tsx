@@ -50,24 +50,38 @@ const CERTIFICATIONS = [
 
 export default function CertificationsPage() {
   return (
-    <main className="relative min-h-screen bg-background text-foreground overflow-x-hidden">
-      <DottedSurface className="opacity-60 sm:opacity-80" />
+    <main className="relative min-h-screen bg-black text-white selection:bg-white/20 selection:text-white overflow-x-hidden">
+      {/* Background Video */}
+      <div className="fixed inset-0 z-0 pointer-events-none">
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="h-full w-full object-cover"
+        >
+          <source src="/other.mp4" type="video/mp4" />
+        </video>
+        <div className="absolute inset-0 bg-gradient-to-b from-black/25 via-black/40 to-black/75" />
+      </div>
+
+      <DottedSurface className="opacity-40 sm:opacity-60" />
       
-      <div className="relative z-10 mx-auto max-w-5xl px-6 py-12 sm:py-24">
-        <Link href="/" className="group mb-8 inline-flex items-center gap-2 text-[10px] font-bold tracking-widest text-foreground/40 hover:text-foreground transition-colors uppercase sm:mb-12 sm:text-xs">
+      <div className="relative z-10 mx-auto max-w-5xl px-6 py-8 sm:py-14">
+        <Link href="/" className="group mb-8 inline-flex items-center gap-2 text-[10px] font-bold tracking-widest text-zinc-400 hover:text-white transition-colors uppercase sm:mb-12 sm:text-xs">
           <ArrowLeft size={16} className="transition-transform group-hover:-translate-x-1" />
-          Back to Terminal
+          Back to Home
         </Link>
         
         <header className="mb-12 sm:mb-24">
           <div className="flex items-center gap-3 mb-4 sm:gap-4">
-             <ShieldCheck className="text-foreground/20 size-6 sm:size-8" />
-             <h1 className="text-[10px] font-mono tracking-[0.3em] text-foreground/40 uppercase sm:text-xs sm:tracking-[0.4em]">Verified Credentials</h1>
+             <ShieldCheck className="text-white/60 size-6 sm:size-8" />
+             <h1 className="text-[10px] font-mono tracking-[0.3em] text-zinc-400 uppercase sm:text-xs sm:tracking-[0.4em]">Verified Credentials</h1>
           </div>
-          <h2 className="mb-4 text-4xl font-black tracking-tighter sm:text-8xl">
-            Authenticated <span className="text-foreground/20 italic font-light block sm:inline">Expertise</span>
+          <h2 className="mb-4 text-4xl font-black tracking-tighter text-white sm:text-8xl">
+            Authenticated <span className="text-white/30 italic font-light block sm:inline">Expertise</span>
           </h2>
-          <p className="max-w-2xl text-base text-foreground/60 leading-relaxed font-medium sm:text-xl">
+          <p className="max-w-2xl text-base text-zinc-300 leading-relaxed font-medium sm:text-xl">
             Industry-standard validations across cloud computing and neural architectures.
           </p>
         </header>
@@ -78,23 +92,23 @@ export default function CertificationsPage() {
               key={cert.name} 
               href={cert.link} 
               target="_blank" 
-              className="group block relative p-6 rounded-[2rem] border border-foreground/5 bg-foreground/[0.01] transition-all hover:bg-foreground/[0.03] hover:border-foreground/20 sm:p-12 sm:rounded-[3.5rem]"
+              className="group block relative p-6 rounded-[2rem] border border-white/10 bg-zinc-950/75 backdrop-blur-xl transition-all hover:bg-zinc-900/80 hover:border-white/30 sm:p-12 sm:rounded-[3.5rem]"
             >
               <div className="grid gap-6 md:grid-cols-[1fr_auto] md:gap-12 items-center">
                 <div className="space-y-4 sm:space-y-6">
-                  <div className={`inline-flex p-3 rounded-xl sm:p-4 sm:rounded-2xl ${cert.color}`}>
+                  <div className="inline-flex p-3 rounded-xl sm:p-4 sm:rounded-2xl bg-white/10 text-white border border-white/15">
                     <Award size={20} className="sm:size-6" />
                   </div>
                   <div className="space-y-1 sm:space-y-2">
-                    <h3 className="text-xl font-black tracking-tight text-foreground sm:text-3xl">{cert.name}</h3>
-                    <p className="text-sm font-bold text-foreground/40 sm:text-lg">{cert.issuer} ● {cert.date}</p>
+                    <h3 className="text-xl font-black tracking-tight text-white group-hover:text-white transition-colors sm:text-3xl">{cert.name}</h3>
+                    <p className="text-sm font-bold text-zinc-400 sm:text-lg">{cert.issuer} • {cert.date}</p>
                   </div>
-                  <p className="text-base leading-relaxed text-foreground/60 font-medium max-w-2xl sm:text-xl">
+                  <p className="text-base leading-relaxed text-zinc-300 font-medium max-w-2xl sm:text-xl">
                     {cert.description}
                   </p>
                 </div>
                 
-                <div className="flex items-center justify-end gap-2 font-black text-[10px] tracking-widest uppercase text-foreground/20 group-hover:text-foreground transition-colors sm:text-xs">
+                <div className="flex items-center justify-end gap-2 font-black text-[10px] tracking-widest uppercase text-zinc-400 group-hover:text-white transition-colors sm:text-xs">
                   Validate <ExternalLink size={14} className="sm:size-16" />
                 </div>
               </div>
@@ -103,10 +117,13 @@ export default function CertificationsPage() {
         </div>
       </div>
 
-      <footer className="relative border-t border-foreground/5 py-12 text-center sm:py-16">
-        <div className="font-mono text-[8px] tracking-[0.4em] text-foreground/20 uppercase sm:text-[10px] sm:tracking-[0.5em]">
-          Muskan Gujar ● Applied Intelligence Lab
-        </div>
+      <footer className="relative border-t border-white/10 py-12 text-center sm:py-16">
+        <a 
+          href="mailto:muskangujar220104@gmail.com"
+          className="font-mono text-[9px] tracking-[0.2em] text-zinc-400 uppercase hover:text-white hover:underline transition-colors sm:text-xs"
+        >
+          Muskan Gujar • Associate Specialist • Drop a DM / Email Directly (muskangujar220104@gmail.com)
+        </a>
       </footer>
     </main>
   );

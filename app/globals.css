@@ -3,25 +3,19 @@
 @tailwind utilities;
 
 :root {
-  --background: 0 0% 100%;
-  --foreground: 240 10% 3.9%;
-  --primary: 240 5.9% 10%;
-  --primary-foreground: 0 0% 98%;
-}
-
-.dark {
-  --background: 240 10% 3.9%;
-  --foreground: 0 0% 98%;
-  --primary: 0 0% 98%;
-  --primary-foreground: 240 5.9% 10%;
+  --background: #09090b;
+  --foreground: #fafafa;
+  --primary: #ffffff;
+  --primary-foreground: #09090b;
 }
 
 @layer base {
   * {
-    @apply border-foreground/10;
+    border-color: rgba(255, 255, 255, 0.1);
   }
   body {
-    @apply bg-background text-foreground;
+    background-color: var(--background);
+    color: var(--foreground);
     -ms-overflow-style: none; /* Internet Explorer 10+ */
     scrollbar-width: none; /* Firefox */
     overflow-x: hidden;

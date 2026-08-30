@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useRef, useEffect } from 'react';
-import { MessageSquare, X, Send, Bot, Mail, Github, Sparkles, Loader2 } from 'lucide-react';
+import { MessageSquare, X, Send, Coffee, Mail, Github, Sparkles, Loader2 } from 'lucide-react';
 import { askAI } from '@/app/actions/ai';
 import ReactMarkdown from 'react-markdown';
 
@@ -128,32 +128,32 @@ export const Chatbot = () => {
       {!isOpen && (
         <button
           onClick={() => setIsOpen(true)}
-          className="group relative flex h-14 w-14 items-center justify-center rounded-2xl bg-foreground text-background shadow-2xl transition-all hover:scale-110 active:scale-95 sm:h-16 sm:w-16 cursor-pointer pointer-events-auto"
+          className="group relative flex h-9 w-9 items-center justify-center rounded-xl bg-white text-black shadow-2xl transition-all hover:scale-110 active:scale-95 sm:h-10 sm:w-10 cursor-pointer pointer-events-auto"
+          title="Chat with Cosmo"
         >
-          <Sparkles className="absolute -top-2 -right-2 h-6 w-6 text-foreground animate-pulse" />
-          <Bot size={24} />
+          <Coffee size={16} />
         </button>
       )}
 
       {isOpen && (
-        <div className="flex h-[80dvh] w-[90vw] sm:h-[550px] sm:w-[400px] flex-col overflow-hidden rounded-[2rem] border border-foreground/10 bg-background/95 shadow-2xl backdrop-blur-3xl">
+        <div className="flex h-[80dvh] w-[90vw] sm:h-[550px] sm:w-[400px] flex-col overflow-hidden rounded-[2rem] border border-white/10 bg-zinc-950/95 shadow-2xl backdrop-blur-3xl text-white">
           {/* Header */}
-          <div className="flex items-center justify-between border-b border-foreground/5 bg-foreground/5 px-6 py-4">
+          <div className="flex items-center justify-between border-b border-white/10 bg-black/60 px-6 py-4">
             <div className="flex items-center gap-3">
-              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-foreground text-background">
-                {isLoading ? <Loader2 className="animate-spin" size={20} /> : <Bot size={20} />}
+              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white text-black">
+                {isLoading ? <Loader2 className="animate-spin" size={20} /> : <Coffee size={20} />}
               </div>
               <div>
-                <h3 className="text-sm font-black tracking-tight uppercase tracking-widest">Cosmo</h3>
+                <h3 className="text-sm font-black tracking-tight uppercase tracking-widest text-white">Cosmo</h3>
                 <div className="flex items-center gap-1.5">
-                  <span className={`h-1.5 w-1.5 rounded-full ${isLoading ? 'bg-orange-500 animate-bounce' : 'bg-green-500 animate-pulse'}`} />
-                  <span className="text-[10px] font-bold text-foreground/40 uppercase tracking-widest">
+                  <span className={`h-1.5 w-1.5 rounded-full ${isLoading ? 'bg-amber-400 animate-bounce' : 'bg-emerald-400 animate-pulse'}`} />
+                  <span className="text-[10px] font-bold text-zinc-400 uppercase tracking-widest">
                     {isLoading ? 'Processing...' : 'Professional AI Assistant'}
                   </span>
                 </div>
               </div>
             </div>
-            <button onClick={() => setIsOpen(false)} className="rounded-full p-2 hover:bg-foreground/5 text-foreground/40 transition-colors">
+            <button onClick={() => setIsOpen(false)} className="rounded-full p-2 hover:bg-white/10 text-zinc-400 hover:text-white transition-colors">
               <X size={20} />
             </button>
           </div>
@@ -164,11 +164,11 @@ export const Chatbot = () => {
                 <div className={`max-w-[85%] space-y-3 ${m.role === 'user' ? 'items-end' : 'items-start'}`}>
                   <div className={`rounded-3xl px-5 py-3 text-sm font-medium leading-relaxed ${
                     m.role === 'user' 
-                      ? 'bg-foreground text-background rounded-tr-none shadow-lg' 
-                      : 'bg-foreground/5 text-foreground rounded-tl-none border border-foreground/5'
+                      ? 'bg-white text-black rounded-tr-none shadow-lg' 
+                      : 'bg-white/[0.06] text-zinc-200 rounded-tl-none border border-white/10'
                   }`}>
                     {m.role === 'bot' ? (
-                      <div className="prose prose-sm prose-invert max-w-none">
+                      <div className="prose prose-sm prose-invert max-w-none text-zinc-200">
                         <ReactMarkdown>
                           {m.content}
                         </ReactMarkdown>
@@ -180,7 +180,7 @@ export const Chatbot = () => {
                   {m.links && (
                     <div className="flex flex-wrap gap-2">
                        {m.links.map(l => (
-                         <a key={l.label} href={l.url} target="_blank" className="flex items-center gap-2 rounded-full bg-foreground/10 px-4 py-2 text-xs font-black text-foreground hover:bg-foreground transition-all hover:text-background">
+                         <a key={l.label} href={l.url} target="_blank" className="flex items-center gap-2 rounded-full bg-white/10 border border-white/10 px-4 py-2 text-xs font-black text-white hover:bg-white hover:text-black transition-all">
                             <l.icon size={14} /> {l.label}
                          </a>
                        ))}
@@ -191,16 +191,16 @@ export const Chatbot = () => {
             ))}
           </div>
 
-          <div className="border-t border-foreground/5 bg-foreground/[0.02] p-4 sm:p-6 space-y-4">
+          <div className="border-t border-white/10 bg-black/60 p-4 sm:p-6 space-y-4">
             {!isLoading && messages.length <= 1 && (
               <div className="flex flex-col gap-2">
-                <span className="text-[10px] font-black uppercase tracking-widest text-foreground/20 px-1">Quick Inquiries</span>
+                <span className="text-[10px] font-black uppercase tracking-widest text-zinc-500 px-1">Quick Inquiries</span>
                 <div className="flex flex-wrap gap-2">
                   {SUGGESTIONS.map(s => (
                     <button 
                       key={s} 
                       onClick={() => handleSend(s)}
-                      className="rounded-xl border border-foreground/10 px-3 py-1.5 text-[11px] font-bold text-foreground/40 transition-all hover:border-foreground/60 hover:text-foreground hover:bg-foreground/[0.02]"
+                      className="rounded-xl border border-white/10 bg-white/[0.04] px-3 py-1.5 text-[11px] font-bold text-zinc-300 transition-all hover:border-white/40 hover:text-white hover:bg-white/10"
                     >
                       {s}
                     </button>
@@ -217,12 +217,12 @@ export const Chatbot = () => {
                 onKeyDown={(e) => e.key === 'Enter' && handleSend(input)}
                 placeholder={isLoading ? "Analyzing..." : "Ask about her work or expertise..."}
                 disabled={isLoading}
-                className="flex-1 rounded-2xl border border-foreground/10 bg-transparent px-4 py-3 text-sm font-medium text-foreground placeholder:text-foreground/20 focus:border-foreground/30 focus:outline-none disabled:opacity-50"
+                className="flex-1 rounded-2xl border border-white/15 bg-black/40 px-4 py-3 text-sm font-medium text-white placeholder:text-zinc-600 focus:border-white/40 focus:outline-none disabled:opacity-50"
               />
               <button 
                 onClick={() => handleSend(input)}
                 disabled={isLoading}
-                className="flex h-12 w-12 items-center justify-center rounded-2xl bg-foreground text-background transition-all hover:scale-105 active:scale-95 shadow-lg disabled:opacity-50"
+                className="flex h-12 w-12 items-center justify-center rounded-2xl bg-white text-black transition-all hover:bg-zinc-200 hover:scale-105 active:scale-95 shadow-lg disabled:opacity-50"
               >
                 {isLoading ? <Loader2 className="animate-spin" size={18} /> : <Send size={18} />}
               </button>

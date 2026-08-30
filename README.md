@@ -2,19 +2,19 @@
 
 A futuristic, high-end portfolio featuring an intelligent AI representative (Cosmo) and a continuous-flow narrative layout.
 
-## 🚀 Built With
+## Built With
 - **Framework**: [Next.js 14](https://nextjs.org/)
 - **Styling**: [Tailwind CSS](https://tailwindcss.com/)
 - **Animations**: [Framer Motion](https://www.framer.com/motion/)
 - **AI Agent**: [Groq LPU](https://groq.com/) (Llama-3.1-8B)
 - **Visuals**: [Lucide React](https://lucide.dev/) & [Three.js](https://threejs.org/)
 
-## 🤖 Features
+## Features
 - **Cosmo (AI Representative)**: A professional and efficient assistant that handles technical inquiries and project walkthroughs.
 - **Dynamic Backgrounds**: Interactive dotted surface background with optimized z-index.
 - **Continuous Narrative**: A scroll-focused storytelling layout for career progression.
 
-## 🛠️ Local Development
+## Local Development
 
 1. **Clone the repository**
 2. **Install dependencies**:
@@ -31,7 +31,7 @@ A futuristic, high-end portfolio featuring an intelligent AI representative (Cos
    npm run dev
    ```
 
-## 🌐 Deployment
+## Deployment
 
 **Recommended: Vercel**
 Since this project uses **Next.js Server Actions** for secure AI inference, it requires a Node.js environment. Deployment to static hosts like GitHub Pages will break the AI functionality.
